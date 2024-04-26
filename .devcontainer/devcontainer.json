@@ -1,5 +1,5 @@
 {
-  "name": "qiskit-dev",
+  "name": "qiskit-devcontainer",
   "build": {
     "dockerfile": "../Dockerfile"
   },
@@ -15,8 +15,29 @@
         "shardulm94.trailing-spaces",
         "streetsidesoftware.code-spell-checker",
         "tamasfe.even-better-toml"
-      ]
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/home/vscode/venv/bin/python",
+        "python.formatting.blackPath": "/home/vscode/venv/bin/black",
+        "python.formatting.provider": "black",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.linting.pylintPath": "/home/vscode/venv/bin/pylint",
+        "python.terminal.activateEnvInCurrentTerminal": true,
+        "isort.path": [
+          "/home/vscode/venv/bin/isort"
+        ],
+        "[python]": {
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": "always"
+          }
+        }
+      }
     }
   },
+  "containerUser": "vscode",
+  "remoteUser": "vscode",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/qiskit,type=bind",
+  "workspaceFolder": "/home/vscode/qiskit",
   "postCreateCommand": "pip install --editable ."
 }
